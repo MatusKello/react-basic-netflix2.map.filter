@@ -2,6 +2,10 @@ body {
   background-color: #141414;
 }
 
+.main-page {
+  color: red;
+}
+
 .all-buttons {
   display: flex;
   flex-direction: row;
@@ -52,4 +56,19 @@ body {
   padding-left: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.back-button {
+  color: white;
+  background-color: #e50914;
+  padding: 5px 10px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
