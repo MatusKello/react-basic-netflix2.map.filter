@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import allMovies from './data';
 import categories from './categories';
+import MovieCard from './components/MovieCard';
 
 const App = () => {
   const [typeOfMovie, setTypeOfMovie] = useState('komedie');
@@ -39,13 +40,14 @@ const App = () => {
               const { id, image, title, age, tags, description } = oneMovie;
 
               return (
-                <div className='one-movie' key={id}>
-                  <img src={image} alt='' />
-                  <h2>{title}</h2>
-                  <p>{age}</p>
-                  <p>{tags}</p>
-                  <p>{description}</p>
-                </div>
+                <MovieCard
+                  key={id}
+                  image={image}
+                  title={title}
+                  age={age}
+                  tags={tags}
+                  description={description}
+                />
               );
             })}
           </div>
