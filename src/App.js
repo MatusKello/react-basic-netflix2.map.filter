@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import allMovies from './data';
 import categories from './categories';
 import MovieCard from './components/MovieCard';
+import { ThemeProvider } from '@mui/material/styles';
+import theme from './configs/theme';
+import { Box, Button, Typography } from '@mui/material';
 
 const App = () => {
   const [typeOfMovie, setTypeOfMovie] = useState('komedie');
@@ -12,30 +15,58 @@ const App = () => {
   });
 
   return (
-    <div>
+    <ThemeProvider theme={theme}>
       {mainPage ? (
-        <div className=''>
-          <h1 className='one-movie'>Netflix</h1>
-          <button className='one-button' onClick={() => setMainPage(false)}>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'column',
+            background: theme.palette.secondary.main,
+            color: theme.palette.tertiary.main,
+          }}
+        >
+          <Typography variant='h2' sx={{ color: theme.palette.primary.main }}>
+            Netflix
+          </Typography>
+          <Button variant='contained' onClick={() => setMainPage(false)}>
             Categories
-          </button>
-        </div>
+          </Button>
+        </Box>
       ) : (
         <div>
-          <div className='all-buttons'>
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              flexDirection: 'row',
+            }}
+          >
             {categories.map((oneCategory, index) => {
               return (
-                <button
-                  className='one-button'
-                  key={index}
-                  onClick={() => setTypeOfMovie(oneCategory)}
-                >
-                  {oneCategory}
-                </button>
+                <Box>
+                  <Button
+                    sx={{ marginLeft: '1rem' }}
+                    variant='contained'
+                    key={index}
+                    onClick={() => setTypeOfMovie(oneCategory)}
+                  >
+                    {oneCategory}
+                  </Button>
+                </Box>
               );
             })}
-          </div>
-          <div className='all-movies'>
+          </Box>
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              flexDirection: 'row',
+            }}
+          >
             {vysledneFilmy.map((oneMovie) => {
               const { id, image, title, age, tags, description } = oneMovie;
 
@@ -50,13 +81,13 @@ const App = () => {
                 />
               );
             })}
-          </div>
-          <button className='back-button' onClick={() => setMainPage(true)}>
+          </Box>
+          <Button variant='contained' onClick={() => setMainPage(true)}>
             Back
-          </button>
+          </Button>
         </div>
       )}
-    </div>
+    </ThemeProvider>
   );
 };
 

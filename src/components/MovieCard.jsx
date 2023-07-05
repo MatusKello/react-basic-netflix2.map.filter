@@ -1,14 +1,25 @@
-import React from 'react';
+import theme from '../configs/theme';
+import { Card, Typography } from '@mui/material';
 
 const MovieCard = ({ image, title, age, tags, description }) => {
   return (
-    <div className='one-movie'>
+    <Card
+      sx={{
+        background: theme.palette.secondary.dark,
+        color: theme.palette.tertiary.main,
+        p: '0.5rem',
+      }}
+    >
       <img src={image} alt='' />
-      <h2>{title}</h2>
-      <p>{age}</p>
-      <p>{tags}</p>
-      <p>{description}</p>
-    </div>
+      <Typography variant='h4'>{title}</Typography>
+      <Typography variant='body1'>{age}</Typography>
+      <Typography variant='body1' sx={{ textDecoration: 'underline' }}>
+        {tags}
+      </Typography>
+      <Typography variant='subtitle1' sx={{ fontStyle: 'italic' }}>
+        {description}
+      </Typography>
+    </Card>
   );
 };
 
